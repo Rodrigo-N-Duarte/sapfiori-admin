@@ -1,0 +1,22 @@
+<mvc:View 
+    controllerName="br.com.fioriappreport356.controller.NotFound"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+	xmlns="sap.m"
+	xmlns:l="sap.ui.layout"
+	height="100%">
+	<l:ResponsiveSplitter id="_IDGenResponsiveSplitter1">
+		<l:PaneContainer id="_IDGenPaneContainer1" orientation="Vertical">
+			<l:SplitPane id="_IDGenSplitPane1">
+				<l:layoutData>
+					<l:SplitterLayoutData id="_IDGenSplitterLayoutData1" size="100%" />
+				</l:layoutData>
+				<IllustratedMessage id="_IDGenIllustratedMessage1" title="{i18n>pageNotFound}" description="{i18n>descriptionNotFound}" enableVerticalResponsiveness="true" illustrationType="sapIllus-NoActivities">
+					<additionalContent>
+						<Button id="_IDGenButton1" text="{i18n>backBtn}" press="onClickBack" />
+					</additionalContent>
+				</IllustratedMessage>
+			</l:SplitPane>
+		</l:PaneContainer>
+	</l:ResponsiveSplitter>
+</mvc:View>

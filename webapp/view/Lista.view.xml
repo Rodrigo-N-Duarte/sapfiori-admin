@@ -1,0 +1,101 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:f="sap.f" xmlns:layout="sap.ui.layout" xmlns:semantic="sap.f.semantic" xmlns:fb="sap.ui.comp.filterbar" controllerName="br.com.fioriappreport356.controller.Lista" displayBlock="true" height="100%">
+    <SemanticPage xmlns="sap.f.semantic" showFooter="false" id="pageLista">
+        <titleHeading>
+            <m:Title xmlns:m="sap.m" text="{i18n>title}" id="title0"/>
+        </titleHeading>
+
+        <headerContent>
+            <fb:FilterBar id="filterbar" persistencyKey="myPersKey" useToolbar="false" search="onSearch" afterVariantLoad=".onAfterVariantLoad" showGoOnFB="true">
+                <fb:filterGroupItems>
+                    <fb:FilterGroupItem xmlns:sap.m="sap.m" label="{i18n>fgitemProdutoID}" name="productId" labelTooltip="{i18n>fgitemProdutoID}" visibleInFilterBar="true" groupTitle="Group Title" groupName="principal" id="item1">
+                        <fb:control>
+                            <sap.m:Input id="iptProductId" placeholder="{i18n>lblTtpProdutoID}"/>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                    <fb:FilterGroupItem xmlns:sap.m="sap.m" label="{i18n>fgitemNomeProduto}" name="productName" labelTooltip="{i18n>fgitemNomeProduto}" visibleInFilterBar="true" groupTitle="Group Title" groupName="princ" id="item2">
+                        <fb:control>
+                            <sap.m:Input id="iptProductName" placeholder="{i18n>lblTtpNomeProduto}"/>
+                        </fb:control>
+                    </fb:FilterGroupItem>
+                </fb:filterGroupItems>
+            </fb:FilterBar>
+        </headerContent>
+
+        <titleMainAction/>
+
+        <titleCustomTextActions/>
+
+        <titleCustomIconActions/>
+
+        <content>
+            <sap.m:Table xmlns:sap.m="sap.m" xmlns:cd="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1" noDataText="{i18n>noData}" id="tableProdutos" items="{path: '/Produtos', parameters: {expand: 'to_category'}}" cd:w5g.dt.context="/Produtos/to_category">
+                <sap.m:items>
+                    <sap.m:ColumnListItem press="onSelectProduct" type="Active" id="item0">
+                        <sap.m:cells>
+                            <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://product" size="2em" id="icon0"/>
+                            <Text xmlns="sap.m" text="{Productid}" id="text3"/>
+                            <ObjectIdentifier xmlns="sap.m" title="{Name}" text="{Description}" titleActive="false" id="identifier0"/>
+                            <Text xmlns="sap.m" text="{to_category/Description}" id="text6"/>
+                            <Text xmlns="sap.m" text="{Supplierid}" id="text7"/>
+                            <Text xmlns="sap.m" text="{Measureunit}" id="text8"/>
+                            <ObjectNumber xmlns="sap.m" number="{ parts: [{path:'Price'}, {path:'Currencycode'}], type:'sap.ui.model.type.Currency', formatOptions: {showMeasure: false}}" id="number0" unit="{Currencycode}" state="Information"/>
+                            <ObjectStatus xmlns="sap.m" state="{path: 'Status', formatter: '.formatStateStatusProduto'}" id="status0" icon="{path: 'Status', formatter: '.formatIconProduct'}" text="{path: 'Status', formatter: '.formatStatusProduto'}" inverted="true"/>
+                            <Text xmlns="sap.m" id="text6_1709647343542" text="{path:'Createdat', formatter: '.formatTableDate'}"/>
+                        </sap.m:cells>
+                    </sap.m:ColumnListItem>
+                </sap.m:items>
+                <sap.m:columns>
+                    <sap.m:Column id="column0">
+                        <sap.m:header>
+                            <sap.m:Label text="{i18n>logo}" id="label0"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                    <sap.m:Column id="column1">
+                        <sap.m:header>
+                            <sap.m:Label text="{i18n>produtoId}" id="label1"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                    <sap.m:Column id="column2">
+                        <sap.m:header>
+                            <sap.m:Label text="{i18n>name}" id="label2"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                    <sap.m:Column id="column0_1709645599082">
+                        <sap.m:header>
+                            <sap.m:Text text="{i18n>categoria}" id="text9"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                    <sap.m:Column id="column1_1709645604462">
+                        <sap.m:header>
+                            <sap.m:Text text="{i18n>fornecedorId}" id="text10"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                    <sap.m:Column id="column2_1709645618483">
+                        <sap.m:header>
+                            <sap.m:Text text="{i18n>unMedida}" id="text11"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                    <sap.m:Column id="column3">
+                        <sap.m:header>
+                            <sap.m:Text text="{i18n>preco}" id="text12"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                    <sap.m:Column id="column4">
+                        <sap.m:header>
+                            <sap.m:Text text="{i18n>status}" id="text13"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                    <sap.m:Column id="column5">
+                        <sap.m:header>
+                            <sap.m:Text text="{i18n>dataCriacao}" id="text14"/>
+                        </sap.m:header>
+                    </sap.m:Column>
+                </sap.m:columns>
+            </sap.m:Table>
+        </content>
+
+        <footerCustomActions>
+            <m:Button xmlns:m="sap.m" text="Button 1" id="button2"/>
+        </footerCustomActions>
+    </SemanticPage>
+</mvc:View>

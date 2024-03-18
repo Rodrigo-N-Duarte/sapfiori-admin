@@ -1,0 +1,163 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "br.com.fioriappreport356",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.12.4",
+            "toolsId": "f6f895a4-11eb-48e9-bd0f-6bcde5db4d88"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZSB_PRODUCAO_356/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "mainService_Annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "mainService_Annotation": {
+                "uri": "/destinations/S4_HANA_Treinamento/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZSB_PRODUCAO_356_VAN',Version='0001')/$value/",
+                "type": "ODataAnnotation",
+                "settings": {
+                    "localUri": "localService/mainService_Annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.120.9",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "br.com.fioriappreport356.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {}
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "br.com.fioriappreport356.view",
+                "controlAggregation": "pages",
+                "controlId": "appID",
+                "clearControlAggregation": false,
+                "bypassed": {
+                    "target": "notFound"
+                }
+            },
+            "routes": [
+                {
+                    "name": "Lista",
+                    "pattern": "",
+                    "target": [
+                        "lista"
+                    ]
+                },
+                {
+                    "name": "Detalhes",
+                    "pattern": "detalhes/{Productid}",
+                    "target": [
+                        "detalhes"
+                    ]
+                }
+            ],
+            "targets": {
+                "lista": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "lista",
+                    "viewName": "Lista",
+                    "controlId": "appID"
+                },
+                "detalhes": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "detalhes",
+                    "viewName": "Detalhes",
+                    "controlId": "appID"
+                },
+                "notFound": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewId": "notFound",
+                    "viewName": "NotFound",
+                    "controlId": "appID"
+                },
+                "objectNotFound": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "viewId": "objectNotFound",
+                    "viewName": "ObjectNotFound",
+                    "controlId": "appID"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "br.com.fioriappreport356.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}
