@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<SelectDialog id="_IDGenSelectDialog1"
+		title="{i18n>titleMCCategoria}"
+        contentHeight="50%"
+		search="onValueHelpSearch"
+		confirm="onValueHelpConfirm"
+		cancel="onValueHelpConfirm"
+		items="{
+			path: '/Categorias'
+		}">
+		<StandardListItem id="_IDGenStandardListItem1"
+			title="{Category}"
+			description="{Description}"
+			icon="sap-icon://product"
+			iconDensityAware="false"
+			iconInset="false"
+			type="Active" />
+	</SelectDialog>    
+</core:FragmentDefinition>

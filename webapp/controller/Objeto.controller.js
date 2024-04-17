@@ -7,7 +7,7 @@ sap.ui.define([
     function (Controller) {
         "use strict";
 
-        return Controller.extend("br.com.fioriappreport356.controller.Objeto", {
+        return Controller.extend("br.com.fioriappadmin356.controller.Objeto", {
             onInit: function () {
 
             }

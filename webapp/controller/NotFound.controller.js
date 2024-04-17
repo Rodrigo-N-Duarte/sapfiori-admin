@@ -6,7 +6,7 @@ sap.ui.define(
   function (BaseController, History) {
     "use strict";
 
-    return BaseController.extend("br.com.fioriappreport356.controller.NotFound", {
+    return BaseController.extend("br.com.fioriappadmin356.controller.NotFound", {
       onInit: function () {
       },
 

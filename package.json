@@ -13,7 +13,9 @@
   "devDependencies": {
     "@ui5/cli": "^3.0.0",
     "@sap/ux-ui5-tooling": "1",
-    "@sap-ux/ui5-middleware-fe-mockserver": "2"
+    "@sap-ux/ui5-middleware-fe-mockserver": "2",
+    "eslint": "5.16.x", 
+    "@sap/eslint-plugin-ui5-jsdocs": "2.0.x"
   },
   "scripts": {
     "start": "fiori run --open \"test/flpSandbox.html?sap-client=100&sap-ui-xx-viewCache=false#brcomfioriappreport356-display\"",

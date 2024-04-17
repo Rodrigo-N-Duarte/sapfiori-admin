@@ -1,7 +1,7 @@
 <mvc:View
     xmlns:form="sap.ui.layout.form"
     xmlns:core="sap.ui.core"
-    controllerName="br.com.fioriappreport356.controller.Detalhes"
+    controllerName="br.com.fioriappadmin356.controller.Detalhes"
     xmlns:mvc="sap.ui.core.mvc"
     xmlns:m="sap.m"
     displayBlock="true"
@@ -147,9 +147,9 @@
                     <m:ObjectStatus
                         id="_IDGenObjectStatus1"
                         xmlns="sap.m"
-                        state="{path: 'Status', formatter: '.formatStateStatusProduto'}"
-                        icon="{path: 'Status', formatter: '.formatIconProduct'}"
-                        text="{path: 'Status', formatter: '.formatStatusProduto'}"
+                        state="{path: 'Status', formatter: '.objFormatter.formatStateStatusProduto'}"
+                        icon="{path: 'Status', formatter: '.objFormatter.formatIconProduct'}"
+                        text="{path: 'Status', formatter: '.objFormatter.formatStatusProduto'}"
                         inverted="true"
                     />
                 </m:VBox>
@@ -193,7 +193,7 @@
                         />
                         <m:Link
                             id="_IDGenLink7"
-                            text="{path:'Createdat', formatter: '.formatTableDate'}"
+                            text="{path:'Createdat', formatter: '.objFormatter.formatTableDate'}"
                         />
                     </m:HBox>
                     <m:HBox id="_IDGenHBox6">
@@ -215,7 +215,7 @@
                         />
                         <m:Link
                             id="_IDGenLink9"
-                            text="{path:'Changedat', formatter: '.formatTableDate'}"
+                            text="{path:'Changedat', formatter: '.objFormatter.formatTableDate'}"
                         />
                     </m:HBox>
                 </m:VBox>
@@ -289,7 +289,7 @@
                                     />
                                     <m:Text
                                         id="_IDGenText8"
-                                        text="{path: 'Weightmeasure', formatter: '.formatFloatNumber'}"
+                                        text="{path: 'Weightmeasure', formatter: '.objFormatter.formatFloatNumber'}"
                                         class="sapMObjectNumberMedium"
                                     />
                                     <m:Label
@@ -307,7 +307,7 @@
                                     />
                                     <m:Text
                                         id="_IDGenText10"
-                                        text="{path: 'Width', formatter: '.formatFloatNumber'}"
+                                        text="{path: 'Width', formatter: '.objFormatter.formatFloatNumber'}"
                                         class="sapMObjectNumberMedium"
                                     />
                                     <m:Label
@@ -316,7 +316,7 @@
                                     />
                                     <m:Text
                                         id="_IDGenText11"
-                                        text="{path: 'Depth', formatter: '.formatFloatNumber'}"
+                                        text="{path: 'Depth', formatter: '.objFormatter.formatFloatNumber'}"
                                         class="sapMObjectNumberMedium"
                                     />
                                     <m:Label
@@ -325,7 +325,7 @@
                                     />
                                     <m:Text
                                         id="_IDGenText12"
-                                        text="{path: 'Height', formatter: '.formatFloatNumber'}"
+                                        text="{path: 'Height', formatter: '.objFormatter.formatFloatNumber'}"
                                         class="sapMObjectNumberMedium"
                                     />
                                     <m:Label

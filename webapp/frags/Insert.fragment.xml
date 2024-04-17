@@ -1,0 +1,298 @@
+<core:FragmentDefinition
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog
+        id="dialogInsertProduct"
+        title="{i18n>insertDialogTitle}"
+        resizable="false"
+        draggable="false"
+        contentWidth="37%"
+    >
+        <content>
+            <f:SimpleForm
+                id="insertSimpleForm"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                singleContainerFullSize="false"
+            >
+                <f:title>
+                    <core:Title
+                        id="insertSimpleFormTitle"
+                        text="{i18n>simpleFormInsert1}"
+                    />
+                </f:title>
+                <f:content>
+                    <Label
+                        id="lblName"
+                        text="{i18n>sfNome}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertNome"
+                        width="85%"
+                        valueStateText="{i18n>sfNomeStateText}"
+                        maxLength="40"
+                        value="{path: 'MDL_Produto>/Name', type: 'sap.ui.model.type.String', constraints: {search: '^[A-Za-z ]+$', minLength: 3}}"
+                    />
+
+                    <Label
+                        id="lblDescr"
+                        text="{i18n>sfDescription}"
+                    />
+                    <TextArea
+                        id="textNote"
+                        width="85%"
+                        rows="4"
+                        maxLength="255"
+                        value="{ path : 'MDL_Produto>/Description',  type : 'sap.ui.model.type.String', constraints : {minLength: 5, maxLength: 255 }}"
+                    />
+
+                    <Label
+                        id="lblCategory"
+                        text="{i18n>sfCategory}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertCategoria"
+                        showValueHelp="true"
+                        valueHelpRequest=".onClickValueHelpCategoria"
+                        width="85%"
+                        value="{ path : 'MDL_Produto>/Category',  type : 'sap.ui.model.type.String', constraints : {search: '^[a-zA-Z]+[\\s]?[a-zA-Z]+$', minLength: 1}}"
+                    />
+
+                    <Label
+                        id="lblPrice"
+                        text="{i18n>sfPrice}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertPrice"
+                        width="85%"
+                        value="{ 
+                                  path : 'MDL_Produto>/Price', 
+                                  type : 'sap.ui.model.type.Currency',
+                                  constraints : { 
+                                      minimum : 5, 
+                                      maximum : 10000
+                                  }
+                              }"
+                    />
+
+                    <Label
+                        id="lblStatus"
+                        text="{i18n>sfStatus}"
+                        required="true"
+                    />
+                    <Select
+                        id="selectStatus"
+                        width="85%"
+                        selectedKey="{ path : 'MDL_Produto>/Status', type : 'sap.ui.model.type.String',  constraints : {   minLength: 1 } }"
+                    >
+                        <items>
+                            <core:ListItem
+                                id="_IDGenListItem1"
+                                key=""
+                                text="{i18n>selectSelecione}"
+                            />
+                            <core:ListItem
+                                id="_IDGenListItem2"
+                                key="E"
+                                text="{i18n>statusE}"
+                                icon="sap-icon://order-status"
+                            />
+                            <core:ListItem
+                                id="_IDGenListItem3"
+                                key="P"
+                                text="{i18n>statusP}"
+                                icon="sap-icon://order-status"
+                            />
+                            <core:ListItem
+                                id="_IDGenListItem4"
+                                key="F"
+                                text="{i18n>statusF}"
+                                icon="sap-icon://order-status"
+                            />
+                        </items>
+                        <customData>
+                            <core:CustomData
+                                key="required"
+                                value="insert"
+                                writeToDom="true"
+                            />
+                        </customData>
+                    </Select>
+
+                    <Label
+                        id="lblSupplier"
+                        text="{i18n>sfSupplier}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertSupplierName"
+                        type="Number"
+                        width="85%"
+                        change=".getSupplier"
+                        description="{MDL_Produto>/Suppliername}"
+                        valueStateText="{i18n>sfSupplierStateText}"
+                        showSuggestion="true"
+                        suggest="onSuggestSupplier"
+                        suggestionItems="{/Fornecedores}"
+                        maxLength="10"
+                        value="{ path : 'MDL_Produto>/Supplierid', type : 'sap.ui.model.type.String', 
+                        constraints: { search: '^[0-9]*$', minLength: 3,  maxLength: 10 }                               }"
+                    >
+                        <suggestionItems>
+                            <core:ListItem
+                                id="listSuggestionSupllier"
+                                text="{Lifnr}"
+                                additionalText="{Name1}"
+                            />
+                        </suggestionItems>
+                    </Input>
+
+                    <Label
+                        id="lblDtCriacao"
+                        text="{i18n>sfCreatedon}"
+                        required="true"
+                    />
+                    <DatePicker
+                        valueStateText="{i18n>sfCreatedatStateText}"
+                        id="iptInsertCreatedat"
+                        value="{ path: 'MDL_Produto>/Createdat', type : 'sap.ui.model.type.Date',
+                         formatOptions : { source: { pattern: 'dd/MM/yyyy' }, pattern: 'dd/MM/yyyy' },  constraints : {minimum : '01/01/2022' } }"
+                        required="true"
+                        width="85%"
+                    />
+
+                    <Label
+                        id="lblCreatedby"
+                        text="{i18n>sfCreatedby}"
+                        required="true"
+                    />
+                    <Select
+                        id="selChangedby"
+                        width="85%"
+                        selectedKey="{MDL_Produto>/Usercreate}"
+                        items="{MDL_Users>/}"
+                    >
+                        <items>
+                            <core:ListItem
+                                id="_IDGenListItem5"
+                                key="{MDL_Users>Userid}"
+                                text="{MDL_Users>Firstname} {MDL_Users&gt;Lastname}"
+                            />
+                        </items>
+                    </Select>
+                </f:content>
+            </f:SimpleForm>
+
+            <f:SimpleForm
+                id="insertSimpleForm2"
+                editable="false"
+                layout="ResponsiveGridLayout"
+                singleContainerFullSize="false"
+            >
+                <f:title>
+                    <core:Title
+                        id="_IDGenTitle2"
+                        text="{i18n>simpleFormInsert2}"
+                    />
+                </f:title>
+                <f:content>
+                    <Label
+                        id="lblMeasureUnit"
+                        text="{i18n>sfMeasureunit}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertMeasureunit"
+                        width="85%"
+                        value="{path : 'MDL_Produto>/Measureunit', type : 'sap.ui.model.type.String', constraints: { search: '^[A-Za-z]+$', minLength: 1, maxLength: 2 } }"
+                    />
+
+                    <Label
+                        id="lblWeightMeasure"
+                        text="{i18n>sfWeightmeasure}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertWeightmeasure"
+                        width="85%"
+                        value="{path : 'MDL_Produto>/Weightmeasure', type : 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2, minFractionDigits: 2}, constraints: { minLength: 1, maxLength: 6 } }"
+                    />
+
+                    <Label
+                        id="lblWeightUnit"
+                        text="{i18n>sfWeightunit}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertWeightunit"
+                        width="85%"
+                        value="{path : 'MDL_Produto>/Weightunit', type : 'sap.ui.model.type.String', constraints: { search: '^[A-Za-z]+$', minLength: 1, maxLength: 2 } }"
+                    />
+
+                    <Label
+                        id="lblWidth"
+                        text="{i18n>sfWidth}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertWidth"
+                        width="85%"
+                        value="{path : 'MDL_Produto>/Width', type : 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2, minFractionDigits: 2}, constraints: { minLength: 1, maxLength: 6 } }"
+                    />
+
+                    <Label
+                        id="lblDepth"
+                        text="{i18n>sfDepth}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertDepth"
+                        width="85%"
+                        value="{path : 'MDL_Produto>/Depth', type : 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2, minFractionDigits: 2}, constraints: { minLength: 1, maxLength: 6 } }"
+                    />
+
+                    <Label
+                        id="lblHeight"
+                        text="{i18n>sfHeight}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertHeight"
+                        width="85%"
+                        value="{path : 'MDL_Produto>/Height', type : 'sap.ui.model.type.Float', formatOptions: {maxFractionDigits: 2, minFractionDigits: 2}, constraints: { minLength: 1, maxLength: 6 } }"
+                    />
+
+                    <Label
+                        id="lblDimun"
+                        text="{i18n>sfDimunit}"
+                        required="true"
+                    />
+                    <Input
+                        id="iptInsertDimunit"
+                        width="85%"
+                        value="{path : 'MDL_Produto>/Dimunit', type : 'sap.ui.model.type.String', constraints: { search: '^[A-Za-z]+$', minLength: 1, maxLength: 2 } }"
+                    />
+                </f:content>
+            </f:SimpleForm>
+        </content>
+        <buttons>
+            <Button
+                id="btnInsertCancel"
+                text="{i18n>insertDialogCancel}"
+                press="onCloseInsertFragment"
+            />
+            <Button
+                id="btnInsertConfirm"
+                icon="sap-icon://add"
+                type="Success"
+                press="onValida"
+                text="{i18n>insertDialogConfirm}"
+            />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
